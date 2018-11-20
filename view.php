@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,3 +50,4 @@ function initWord(){
 
 </body>
 </html>
+
