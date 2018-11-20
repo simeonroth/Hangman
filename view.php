@@ -20,11 +20,12 @@ Your browser does not support the HTML5 canvas tag.</canvas><br><br>
 
 <script type="text/javascript">
 var c = document.getElementById("myCanvas");
+c.style.border = "none";
 var button = document.getElementById("button");
 var ctx = c.getContext("2d");
 var attempts=0;
 var maxGuesses=7;
-var word = "hangman";
+var word = "fiction";
 var messages = document.getElementById("messages");
 var div = document.getElementById("div");
 var input = document.getElementById("input");
@@ -48,7 +49,7 @@ function guessLetter(){
 	if (!correctGuess){
 		attempts ++;
 		messages.innerHTML="youve made "+attempts+" incorrect guesses";
-		
+		drawHangman();
 		if (attempts==maxGuesses){
 			messages.innerHTML="you Lose";
 			input.disabled=true;
@@ -130,11 +131,12 @@ function update(){
 	for (i=0;i<word.length;i++){
 		div.innerHTML+=hiddenWord[i]+" ";
 	}
-	drawHangman();
+	
 	
 }
 
 function initWord(){
+	drawHangman();
 	hiddenWord = new Array(word.length);
 	for (i=0;i<word.length;i++){
 		hiddenWord[i]="_";
