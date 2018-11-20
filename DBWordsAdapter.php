@@ -1,7 +1,6 @@
 <?php
     //File: Database class
     //Simeon Roth, Brian Ma
-    //checking
 
 class DBWordsAdapter {
     private $DB;
