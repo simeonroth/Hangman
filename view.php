@@ -128,8 +128,6 @@ function update(){
 	for (i=0;i<word.length;i++){
 		div.innerHTML+=hiddenWord[i]+" ";
 	}
-	
-	
 }
 
 function initWord(){
