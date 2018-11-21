@@ -41,33 +41,34 @@ var correctGuess = 0;
 var word = "";
 var element = document.getElementById("random");
 
-var ajax = new XMLHttpRequest();
-ajax.open("GET", "controller.php", true);
-ajax.send();
+///////////////////////////////////////////////////////
+newGame();
 
-ajax.onreadystatechange = function(){
-	console.log("State: " + ajax.readyState);
-	if (ajax.readyState == 4 && ajax.status == 200) {
-		var array = JSON.parse(ajax.responseText);
-		word = array[0]['word'];
-		newGame();
-		element.innerHTML = word;//this so that you can see which word was picked at random
-	}
-}
-
-/////////////////////////////////
-
-//starts a new game
+//this starts a new game
 function newGame(){ 
+	var ajax = new XMLHttpRequest();
+	ajax.open("GET", "controller.php", true);
+	ajax.send();
+
+	ajax.onreadystatechange = function(){
+		console.log("State: " + ajax.readyState);
+		if (ajax.readyState == 4 && ajax.status == 200) {
+			var array = JSON.parse(ajax.responseText);
+			word = array[0]['word'];
+			initWord(); //initialize the word
+			element.innerHTML = word;//this so that you can see which word was picked at random
+		}
+	}
+	
 	messages.innerHTML="";
 	attempts=0;
-	initWord(); //initialize the word
 	
 	ctx.clearRect(0, 0, 300, 300);
 	drawHangman();
 	input.value=""; 
 	input.disabled=false;
 	button.disabled=false;
+
 }
 
 //makes a letter guess when the user inputs a letter
