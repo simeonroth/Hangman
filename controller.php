@@ -1,7 +1,12 @@
 <?php 
-include DBWordsAdapter.php;
+session_start();
+require_once "DBWordsAdapter.php";
 
-$theDBA = new DatabaseAdapter();
-echo json_encode($theDBA->getAllRecords());
+if(! isset($_GET['oneGame'])) {
+    $_GET['oneGame'] = new DBWordsAdapter();
+    $arr = $_GET['oneGame']->getRandomWord();
+}
+
+echo json_encode($arr);
 
 ?>

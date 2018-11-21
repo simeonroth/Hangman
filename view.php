@@ -6,6 +6,7 @@
 <body>
 <h3>Hangman</h3><br>
 
+<div id = "random"></div> <!-- So you can see what word is picked at random -->
 
 <canvas id="myCanvas" width="300" height="300">
 Your browser does not support the HTML5 canvas tag.</canvas><br><br>
@@ -13,6 +14,7 @@ Your browser does not support the HTML5 canvas tag.</canvas><br><br>
 <div id="div"></div><br>
 <input type="text" id="input" size="1" maxlength="1" ></input>
 <button onclick="guessLetter()" id="button">Guess</button><br><br>
+
 <div id="messages"></div><br><br>
 <button onclick="newGame()" id="button">New Game</button>
 
@@ -23,26 +25,47 @@ var c = document.getElementById("myCanvas");
 c.style.border = "none";
 var button = document.getElementById("button");
 var ctx = c.getContext("2d");
+
 var attempts;
 var maxGuesses=7;
-var word = "fiction";
+
 var messages = document.getElementById("messages");
 var div = document.getElementById("div");
 var input = document.getElementById("input");
+
 var guess;
 var hiddenWord;
 var i;
 var correctGuess = 0;
-newGame();
+
+var word = "";
+var element = document.getElementById("random");
+
+var ajax = new XMLHttpRequest();
+ajax.open("GET", "controller.php", true);
+ajax.send();
+
+ajax.onreadystatechange = function(){
+	console.log("State: " + ajax.readyState);
+	if (ajax.readyState == 4 && ajax.status == 200) {
+		var array = JSON.parse(ajax.responseText);
+		word = array[0]['word'];
+		newGame();
+		element.innerHTML = word;//this so that you can see which word was picked at random
+	}
+}
+
+/////////////////////////////////
 
 //starts a new game
 function newGame(){ 
 	messages.innerHTML="";
 	attempts=0;
-	initWord();
+	initWord(); //initialize the word
+	
 	ctx.clearRect(0, 0, 300, 300);
 	drawHangman();
-	input.value="";
+	input.value=""; 
 	input.disabled=false;
 	button.disabled=false;
 }
@@ -61,7 +84,7 @@ function guessLetter(){
 	}
 	if (!correctGuess){ // if youre guess is wrong
 		attempts ++;
-		messages.innerHTML="youve made "+attempts+" incorrect guesses";
+		messages.innerHTML="youve made "+ attempts +" incorrect guesse(s)";
 		drawHangman();
 		if (attempts==maxGuesses){ // lose conditional
 			messages.innerHTML="you Lose";

@@ -25,12 +25,22 @@ class DBWordsAdapter {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
+    public function getRandomWord() {
+        $stmt = $this->DB->prepare('SELECT word FROM words ORDER BY RAND() LIMIT 1');
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
 }//end class DBWordsAdapter
 
 
-$theDBA = new DBWordsAdapter();
-$arr = $theDBA->getAllRecords();
+//testing
 
+//$theDBA = new DBWordsAdapter();
+//echo $theDBA->getRandomWord()[0]['word'];
+
+
+//$arr = $theDBA->getAllRecords();
 //echo $arr[0]['word'] . "<br>" . $arr[1]['word'] . "<br>" . $arr[2]['word'] . "<br>";
 //print_r($arr);
 
