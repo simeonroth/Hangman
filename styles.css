@@ -18,6 +18,25 @@ body::after {
 }
 @font-face {
 	font-family: "Gaegu";
-	src: url("./fonts/Gaegu-Bold.ttf") ;
+	src: url("./fonts/Gaegu-Regular.ttf") ;
 
+}
+
+#button:hover{
+	opacity: 0.5;
+	
+}
+
+#button:active {
+	opacity: 0.3;
+	transform: translateY(4px);
+}	
+input{
+	float: left;
+	font-size: 28px; font-family: Gaegu; 
+	padding-left: 10px;
+	background: url("./images/inputBox.png") no-repeat;
+	width:34px;
+    height:34px;
+    border: 0;
 }
