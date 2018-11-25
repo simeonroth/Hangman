@@ -3,7 +3,9 @@
 <head>
 <link rel="stylesheet" type="text/css" href="styles.css" />
 <title>Hangman</title>
-<!-- Might need session_start() somewhere here -->
+<?php
+session_start (); // Need this in each file before $_SESSION is used.
+?>
 </head>
 <body>
 <h3>Hangman</h3><br>
@@ -40,14 +42,17 @@ var hiddenWord;
 var i;
 var correctGuess = 0;
 
+
 var word = "";
 var element = document.getElementById("random");
 
 ///////////////////////////////////////////////////////
+
 newGame();
 
 //this starts a new game
 function newGame(){ 
+	var array = new Array();
 	var ajax = new XMLHttpRequest();
 	ajax.open("GET", "controller.php", true);
 	ajax.send();
@@ -55,10 +60,11 @@ function newGame(){
 	ajax.onreadystatechange = function(){
 		console.log("State: " + ajax.readyState);
 		if (ajax.readyState == 4 && ajax.status == 200) {
-			var array = JSON.parse(ajax.responseText);
-			word = array[0]['word'];
-			initWord(); //initialize the word
-			element.innerHTML = word;//this so that you can see which word was picked at random
+			//setting up the game
+			array = JSON.parse(ajax.responseText);
+			word = array[Math.floor(Math.random() * array.length)];
+			element.innerHTML = word;
+			initWord();
 		}
 	}
 	
@@ -70,8 +76,6 @@ function newGame(){
 	input.value=""; 
 	input.disabled=false;
 	button.disabled=false;
-	word="helpme";
-	initWord();
 
 }
 

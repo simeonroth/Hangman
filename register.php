@@ -2,8 +2,13 @@
 <html>
 <head>
 <title>Login</title>
+
 </head>
 <body>
+<?php
+session_start();
+?>
+
 <h1>LOGIN</h1> <br>
 
 <h4>New User</h4>
