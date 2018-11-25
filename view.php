@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="styles.css" />
 <title>Hangman</title>
 <!-- Might need session_start() somewhere here -->
 </head>
@@ -69,6 +70,8 @@ function newGame(){
 	input.value=""; 
 	input.disabled=false;
 	button.disabled=false;
+	word="helpme";
+	initWord();
 
 }
 

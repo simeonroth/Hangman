@@ -1,0 +1,23 @@
+body {
+	display: block;
+	position: relative;
+	font-family: Gaegu;
+	font-weight:normal;
+	font-style:normal;	
+}
+body::after {
+	content: "";
+	background: url(./images/graphBackground.png);
+	opacity: 0.5;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+}
+@font-face {
+	font-family: "Gaegu";
+	src: url("./fonts/Gaegu-Bold.ttf") ;
+
+}
