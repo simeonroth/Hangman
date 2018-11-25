@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>Hangman</title>
+<!-- Might need session_start() somewhere here -->
 </head>
 <body>
 <h3>Hangman</h3><br>
@@ -85,16 +86,16 @@ function guessLetter(){
 	}
 	if (!correctGuess){ // if youre guess is wrong
 		attempts ++;
-		messages.innerHTML="youve made "+ attempts +" incorrect guesse(s)";
+		messages.innerHTML="You've made "+ attempts +" incorrect guesse(s)";
 		drawHangman();
 		if (attempts==maxGuesses){ // lose conditional
-			messages.innerHTML="you Lose";
+			messages.innerHTML="You Lose";
 			input.disabled=true;
 			button.disabled=true;
 		}
 	} else {
 		if (ifOver()){ // if game is won
-			messages.innerHTML="you Win";
+			messages.innerHTML="You Win";
 			input.disabled=true;
 			button.disabled=true;
 		}
