@@ -61,8 +61,10 @@ Your browser does not support the HTML5 canvas tag.</canvas><br><br> -->
   <div class="grid-item" id="25" >y</div>
   <div class="grid-item" id="26" >z</div>
 </div>
+<div>
 <img  onclick="guessLetter()" src="./images/buttonGuess.png" id="button">
 <input type="text" id="input" size="1" maxlength="1" ></input><br>
+</div>
 <div>
 <img  onclick="newGame()" src="./images/buttonNewGame.png" id="button"><br>
 </div>
