@@ -9,27 +9,59 @@ session_start (); // Need this in each file before $_SESSION is used.
 </head>
 <body>
 <h1>Hangman</h1><br>
-
-<div id = "random"></div> <!-- So you can see what word is picked at random -->
-
-<canvas id="myCanvas" width="300" height="300">
-Your browser does not support the HTML5 canvas tag.</canvas><br><br>
-
+ 
+ <div class = "col">
+<canvas id="myCanvas" width="300" height="300">Your browser does not support the HTML5 canvas tag.</canvas><br><br>
+<div id="messages"></div>
 <div id="div"></div><br>
-<input type="text" id="input" size="1" maxlength="1" ></input>
-<img  onclick="guessLetter()" src="./images/buttonGuess.png" id="button"><br><br>
+</div>
+ 
+ 
+<div class = "col">
 
-<div id="messages"></div><br><br>
-<img  onclick="newGame()" src="./images/buttonNewGame.png" id="button">
+<div id="random" ></div><br>
+<div id="guessesBox" class="grid-container">
+  <div class="grid-item" id="1" >a</div>
+  <div class="grid-item" id="2" >b</div>
+  <div class="grid-item" id="3" >c</div>
+  <div class="grid-item" id="4" >d</div>
+  <div class="grid-item" id="5" >e</div>
+  <div class="grid-item" id="6" >f</div>
+  <div class="grid-item" id="7" >g</div>
+  <div class="grid-item" id="8" >h</div>
+  <div class="grid-item" id="9" >i</div>
+  <div class="grid-item" id="10" >j</div>
+  <div class="grid-item" id="11" >k</div>
+  <div class="grid-item" id="12" >l</div>
+  <div class="grid-item" id="13" >m</div>
+  <div class="grid-item" id="14" >n</div>
+  <div class="grid-item" id="15" >o</div>
+  <div class="grid-item" id="16" >p</div>
+  <div class="grid-item" id="17" >q</div>
+  <div class="grid-item" id="18" >r</div>
+  <div class="grid-item" id="19" >s</div>
+  <div class="grid-item" id="20" >t</div>
+  <div class="grid-item" id="21" >u</div>
+  <div class="grid-item" id="22" >v</div>
+  <div class="grid-item" id="23" >w</div>
+  <div class="grid-item" id="24" >x</div>
+  <div class="grid-item" id="25" >y</div>
+  <div class="grid-item" id="26" >z</div>
+</div>
+<img  onclick="guessLetter()" src="./images/buttonGuess.png" id="button">
+<input type="text" id="input" size="1" maxlength="1" ></input><br>
 
+<img  onclick="newGame()" src="./images/buttonNewGame.png" id="button"><br>
+</div>
 
 
 <script type="text/javascript">
 var c = document.getElementById("myCanvas");
 c.style.border = "none";
+var guessBox = document.getElementById("guessesBox");
 var button = document.getElementById("button");
 var ctx = c.getContext("2d");
-
+var letterGuesses;
 var attempts;
 var maxGuesses=7;
 
@@ -41,7 +73,7 @@ var guess;
 var hiddenWord;
 var i;
 var correctGuess = 0;
-
+var e;
 
 var word = "";
 var element = document.getElementById("random");
@@ -52,6 +84,8 @@ newGame();
 
 //this starts a new game
 function newGame(){ 
+	initGuessBox();
+	drawGuessBox();
 	var array = new Array();
 	var ajax = new XMLHttpRequest();
 	ajax.open("GET", "controller.php", true);
@@ -72,16 +106,37 @@ function newGame(){
 	attempts=0;
 	
 	ctx.clearRect(0, 0, 300, 300);
+	
 	drawHangman();
 	input.value=""; 
 	input.disabled=false;
 	button.disabled=false;
 
 }
+function initGuessBox(){
+	letterGuesses = new Array(26);
+	for (i=0;i<26;i++){
+		letterGuesses[i] = "&nbsp";
+	}
+}
+
+function drawGuessBox(){
+	
+	for (i=1;i<27;i++){
+		e = document.getElementById(i.toString());
+		e.innerHTML = letterGuesses[i-1];
+	}
+	
+}
 
 //makes a letter guess when the user inputs a letter
 function guessLetter(){ 
 	guess =  input.value.toLowerCase();
+	if (letterGuesses.includes(guess)){
+		messages.innerHTML="You've already guessed " + guess + "!";
+		input.value="";
+		return;
+	}
 	if (!guess.match(/^[a-zA-Z]+$/i)){ // checks if what is entered is a letter;may replace with form submission
 		return;
 	}
@@ -107,6 +162,9 @@ function guessLetter(){
 			button.disabled=true;
 		}
 	}
+	letterGuesses[guess.charCodeAt(0)-'a'.charCodeAt(0)]=guess;
+	drawGuessBox();
+	
 	correctGuess=0;
 	input.value=""; // clears the input field
 	update(); // updates array display
