@@ -31,7 +31,7 @@ Your browser does not support the HTML5 canvas tag.</canvas><br><br> -->
 <!--  <div id="messages"></div><br><br> -->
 <!-- <button onclick="newGame()" id="button">New Game</button> -->
 
-<div>
+
 <div id="random" ></div><br>
 <div id="guessesBox" class="grid-container">
   <div class="grid-item" id="1" >a</div>
@@ -63,7 +63,7 @@ Your browser does not support the HTML5 canvas tag.</canvas><br><br> -->
 </div>
 <img  onclick="guessLetter()" src="./images/buttonGuess.png" id="button">
 <input type="text" id="input" size="1" maxlength="1" ></input><br>
-
+<div>
 <img  onclick="newGame()" src="./images/buttonNewGame.png" id="button"><br>
 </div>
 
