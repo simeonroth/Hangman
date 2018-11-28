@@ -17,7 +17,7 @@ session_start (); // Need this in each file before $_SESSION is used.
 </div>
  
  
-<div class = "col">
+<!--<div class = "col"> -->
 
 <div id = "random"></div> <!-- So you can see what word is picked at random -->
 
