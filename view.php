@@ -64,7 +64,7 @@ Your browser does not support the HTML5 canvas tag.</canvas><br><br> -->
 <input type="text" id="input" size="1" maxlength="1" ></input><br>
 
 <img  onclick="newGame()" src="./images/buttonNewGame.png" id="button"><br>
-</div>
+
 
 
 <script type="text/javascript">
