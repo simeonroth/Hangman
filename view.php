@@ -25,8 +25,8 @@ session_start (); // Need this in each file before $_SESSION is used.
 Your browser does not support the HTML5 canvas tag.</canvas><br><br>
 
 <div id="div"></div><br>
-<input type="text" id="input" size="1" maxlength="1" ></input>
-<button onclick="guessLetter()" id="button">Guess</button><br><br>
+<!--  <input type="text" id="input" size="1" maxlength="1" ></input>
+<button onclick="guessLetter()" id="button">Guess</button><br><br> -->
 
 <div id="messages"></div><br><br>
 <button onclick="newGame()" id="button">New Game</button>
