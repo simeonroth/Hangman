@@ -29,7 +29,7 @@ Your browser does not support the HTML5 canvas tag.</canvas><br><br>
 <button onclick="guessLetter()" id="button">Guess</button><br><br> -->
 
 <div id="messages"></div><br><br>
-<button onclick="newGame()" id="button">New Game</button>
+<!-- <button onclick="newGame()" id="button">New Game</button> -->
 
 <div id="random" ></div><br>
 <div id="guessesBox" class="grid-container">
