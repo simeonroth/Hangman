@@ -19,7 +19,6 @@ session_start (); // Need this in each file before $_SESSION is used.
  
 <div class = "col">
 
-<<<<<<< HEAD
 <div id = "random"></div> <!-- So you can see what word is picked at random -->
 
 <canvas id="myCanvas" width="300" height="300">
@@ -31,7 +30,7 @@ Your browser does not support the HTML5 canvas tag.</canvas><br><br>
 
 <div id="messages"></div><br><br>
 <button onclick="newGame()" id="button">New Game</button>
-=======
+
 <div id="random" ></div><br>
 <div id="guessesBox" class="grid-container">
   <div class="grid-item" id="1" >a</div>
@@ -66,7 +65,6 @@ Your browser does not support the HTML5 canvas tag.</canvas><br><br>
 
 <img  onclick="newGame()" src="./images/buttonNewGame.png" id="button"><br>
 </div>
->>>>>>> branch 'master' of https://github.com/simeonroth/Hangman.git
 
 
 <script type="text/javascript">
