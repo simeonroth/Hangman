@@ -22,7 +22,6 @@ Your browser does not support the HTML5 canvas tag.</canvas><br><br>
 <button onclick="newGame()" id="button">New Game</button>
 
 
-
 <script type="text/javascript">
 var c = document.getElementById("myCanvas");
 c.style.border = "none";

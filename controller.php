@@ -1,8 +1,14 @@
 <?php 
 session_start();
-require_once "DBWordsAdapter.php";
+require_once "DBProfileAdapter.php";
 
 if (isset($_GET['new'])) {
+    $new_username = $_GET['new_username'];
+    $new_password = $_GET['new_password'];
+    
+    $_GET['new'] = new DBProfileAdapter();
+    $_GET['new']->addNewUser($new_username, $new_password);
+    
     header("Location: view.php");
 }
 if (isset($_GET['returning'])) {
