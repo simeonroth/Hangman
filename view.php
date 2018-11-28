@@ -19,7 +19,7 @@ session_start (); // Need this in each file before $_SESSION is used.
  
 <!--<div class = "col"> -->
 
-<div id = "random"></div> <!-- So you can see what word is picked at random -->
+<!-- <div id = "random"></div> So you can see what word is picked at random -->
 
 <!--<canvas id="myCanvas" width="300" height="300">
 Your browser does not support the HTML5 canvas tag.</canvas><br><br> -->
