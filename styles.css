@@ -51,6 +51,9 @@ body::after {
 	float: left;
 	background-color: transparent;
 }
+.size {
+	font-size: 100px;	
+}
 #guessesBox{
 	padding: 5px 10px;
 	padding-bottom: 10px;

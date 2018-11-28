@@ -13,7 +13,7 @@ session_start (); // Need this in each file before $_SESSION is used.
  <div class = "col">
 <canvas id="myCanvas" width="300" height="300">Your browser does not support the HTML5 canvas tag.</canvas><br><br>
 <div id="messages"></div>
-<div id="div"></div><br>
+<div class = "size" id="div"></div><br>
 </div>
  
  
@@ -33,7 +33,7 @@ Your browser does not support the HTML5 canvas tag.</canvas><br><br> -->
 
 <div class = "col">
 
-<div id="random" ></div><br>
+<div class = "size" id="random" ></div><br>
 <div id="guessesBox" class="grid-container">
   <div class="grid-item" id="1" >a</div>
   <div class="grid-item" id="2" >b</div>
