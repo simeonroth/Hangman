@@ -16,7 +16,7 @@ session_start (); // Need this in each file before $_SESSION is used.
 <div class = "size" id="div"></div><br>
 </div>
  
- 
+<!--------------------------------------------------------------------------------> 
 <!--<div class = "col"> -->
 
 <!-- <div id = "random"></div> So you can see what word is picked at random -->
@@ -30,6 +30,7 @@ Your browser does not support the HTML5 canvas tag.</canvas><br><br> -->
 
 <!--  <div id="messages"></div><br><br> -->
 <!-- <button onclick="newGame()" id="button">New Game</button> -->
+<!------------------------------------------------------------------------------->
 
 <div class = "col">
 
