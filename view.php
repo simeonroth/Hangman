@@ -2,10 +2,14 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="styles.css" />
+<link rel="stylesheet" type="text/css" href="styles2.css" />
 <title>Hangman</title>
 <?php
 session_start (); // Need this in each file before $_SESSION is used.
 ?>
+<style>
+
+</style>
 </head>
 <body>
 <h1>Hangman</h1><br>
@@ -13,25 +17,10 @@ session_start (); // Need this in each file before $_SESSION is used.
  <div class = "col">
 <canvas id="myCanvas" width="300" height="300">Your browser does not support the HTML5 canvas tag.</canvas><br><br>
 <div id="messages"></div>
-<div class = "size" id="div"></div><br>
+<div id="lines"></div>
+
 </div>
  
-<!--------------------------------------------------------------------------------> 
-<!--<div class = "col"> -->
-
-<!-- <div id = "random"></div> So you can see what word is picked at random -->
-
-<!--<canvas id="myCanvas" width="300" height="300">
-Your browser does not support the HTML5 canvas tag.</canvas><br><br> -->
-
-<!-- <div id="div"></div><br> -->
-<!--  <input type="text" id="input" size="1" maxlength="1" ></input>
-<button onclick="guessLetter()" id="button">Guess</button><br><br> -->
-
-<!--  <div id="messages"></div><br><br> -->
-<!-- <button onclick="newGame()" id="button">New Game</button> -->
-<!------------------------------------------------------------------------------->
-
 <div class = "col">
 
 <div class = "size" id="random" ></div><br>
@@ -79,8 +68,8 @@ var button = document.getElementById("button");
 var ctx = c.getContext("2d");
 var letterGuesses;
 var attempts;
-var maxGuesses=7;
-
+var maxGuesses=7; 
+var lines =  document.getElementById("lines");
 var messages = document.getElementById("messages");
 var div = document.getElementById("div");
 var input = document.getElementById("input");
@@ -114,7 +103,9 @@ function newGame(){
 			array = JSON.parse(ajax.responseText);
 			word = array[Math.floor(Math.random() * array.length)];
 			element.innerHTML = word;
+			initLines();
 			initWord();
+			
 		}
 	}
 	
@@ -129,6 +120,21 @@ function newGame(){
 	button.disabled=false;
 
 }
+function initLines(){
+	var d;
+	lines.innerHTML="";
+	for (i=0;i<word.length;i++){
+		d = document.createElement("div");
+		d.innerHTML='';
+		d.classList.add('line');
+		d.id = i.toString();
+		lines.appendChild(d);
+	}
+	
+}
+
+
+
 function initGuessBox(){
 	letterGuesses = new Array(26);
 	for (i=0;i<26;i++){
@@ -235,9 +241,10 @@ function ifOver(){
 
 //updates the div 
 function update(){
-	div.innerHTML="";
+	var d;
 	for (i=0;i<word.length;i++){
-		div.innerHTML+=hiddenWord[i]+" ";
+		d = document.getElementById(i.toString());
+		d.innerHTML=hiddenWord[i];
 	}
 }
 
@@ -245,7 +252,7 @@ function update(){
 function initWord(){
 	hiddenWord = new Array(word.length);
 	for (i=0;i<word.length;i++){
-		hiddenWord[i]="_";
+		hiddenWord[i]="&nbsp";
 	}
 	update();
 }
