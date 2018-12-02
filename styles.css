@@ -1,78 +1,11 @@
-body {
-	height: 800px;
-	display: block;
-	position: relative;
-	font-family: Gaegu;
-	font-weight:normal;
-	font-style:normal;	
-}
-body::after {
-	content: "";
-	background: url(./images/graphBackground.png);
-	opacity: 0.5;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	position: absolute;
-	z-index: -1;
-}
-@font-face {
-	font-family: "Gaegu";
-	src: url("./fonts/Gaegu-Regular.ttf") ;
-
-}
-#button{
-	padding-top: 10px;
-	padding-bottom: 0px;
-	float: right;
-}
-
-#button:hover{
-	opacity: 0.5;
-	
-}
-
-#button:active {
-	opacity: 0.3;
-	transform: translateY(4px);
-}	
-.grid-container{
-	grid-template-columns: auto auto auto auto auto;
-	display: grid;
-	align-items: center;
-}
-.grid-item {
-  font-size: 24px;
-  text-align: center;
-  
-}
-.col{
+.line{
+	font-size:24px;
+	display: inline-block;
 	float: left;
-	background-color: transparent;
-}
-.size {
-	font-size: 24px;	
-}
-#guessesBox{
-	padding: 5px 10px;
-	padding-bottom: 10px;
-	width: 180px;
-	height: 240px;
-	box-sizing: border-box;
-	background: url(./images/guessesBox.png);
+	text-align: center; 
+	margin: 3px;
+	height: 30px;
+	 width: 30px; 
 
-} 
-
-input{
-	
-	margin-top: 10px;
-	padding-left: 10px;
-	float: right;
-	font-size: 28px; font-family: Gaegu; 
-	
-	background: url("./images/inputBox.png") no-repeat;
-	width:34px;
-    height:34px;
-    border: 0;
+	 border-bottom: 2px solid black;
 }
