@@ -35,11 +35,14 @@ class DBProfileAdapter {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function checkPassword($userName, $password) {
-        $stmt = $this->DB->prepare('SELECT username FROM user_info WHERE EXISTS (SELECT password FROM user_info WHERE password = :password and username = :username)');
-        
-        $stmt->bindParam(':password', $password);
+    public function getPassword($userName) {
+        $stmt = $this->DB->prepare('SELECT password FROM user_info WHERE username = :username');
         $stmt->bindParam(':username', $userName);
+        
+        //$stmt = $this->DB->prepare('SELECT username FROM user_info WHERE EXISTS (SELECT password FROM user_info WHERE password = :password and username = :username)');
+        
+        //$stmt->bindParam(':password', $password);
+        //$stmt->bindParam(':username', $userName);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

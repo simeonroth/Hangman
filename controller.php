@@ -9,12 +9,14 @@ if(! isset($_SESSION['oneGame'])) {
 /////////////////////////////////////////////////////////////
 if (isset($_GET['new'])){ 
     $new_username = htmlspecialchars($_GET['new_username']);
+    
     $new_password = htmlspecialchars($_GET['new_password']);
+    $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
     
     $_GET['new'] = new DBProfileAdapter();
     
     if (! $_GET['new']->checkUsername($new_username)) {
-        $_GET['new']->addNewUser($new_username, $new_password);
+        $_GET['new']->addNewUser($new_username, $hashed_password);
         header("Location: view.php");
     }
     else {
@@ -29,22 +31,27 @@ if (isset($_GET['new'])){
 
 if (isset($_GET['return'])) {
     $return_username = htmlspecialchars($_GET['return_username']);
+    
     $return_password = htmlspecialchars($_GET['return_password']);
     
     $_GET['return'] = new DBProfileAdapter();
     
     if ($_GET['return']->checkUsername($return_username)) {
-        if ($_GET['return']->checkPassword($return_username, $return_password)) {
-            header("Location: view.php");
+        $arr = $_GET['return']->getPassword($return_username);
+        $hashed_password = $arr[0]['password'];
+        $valid = password_verify($return_password, $hashed_password);
+        
+        if ($valid) {
+            header ("Location: view.php");
         }
-        else {
+        else { //if username exists, but the password is incorrect
             echo ("<h3>Sorry, the username or password is incorrect. Please try again.</h3>");
             echo ("<button type = 'button'><a href = 'register.php'>Back</a></button>");
             exit;
         }
 
     }
-    else {
+    else { //if username does not exist in database
         echo ("<h3>Sorry, the username or password is incorrect. Please try again.</h3>");
         echo ("<button type = 'button'><a href = 'register.php'>Back</a></button>");
         exit;
