@@ -7,7 +7,7 @@ if(! isset($_SESSION['oneGame'])) {
     $_SESSION['oneGame'] = new DBProfileAdapter();
 }
 /////////////////////////////////////////////////////////////
-if (isset($_GET['new'])){ 
+if (isset($_GET['new'])){ //for new users
     $new_username = htmlspecialchars($_GET['new_username']);
     
     $new_password = htmlspecialchars($_GET['new_password']);
@@ -15,7 +15,7 @@ if (isset($_GET['new'])){
     
     $_GET['new'] = new DBProfileAdapter();
     
-    if (! $_GET['new']->checkUsername($new_username)) {
+    if (! $_GET['new']->checkUsername($new_username)) { //if username exists in database
         $_GET['new']->addNewUser($new_username, $hashed_password);
         header("Location: view.php");
     }
@@ -29,14 +29,14 @@ if (isset($_GET['new'])){
 
 }
 
-if (isset($_GET['return'])) {
+if (isset($_GET['return'])) {//for returning users
     $return_username = htmlspecialchars($_GET['return_username']);
     
     $return_password = htmlspecialchars($_GET['return_password']);
     
     $_GET['return'] = new DBProfileAdapter();
     
-    if ($_GET['return']->checkUsername($return_username)) {
+    if ($_GET['return']->checkUsername($return_username)) { //if username exists in database
         $arr = $_GET['return']->getPassword($return_username);
         $hashed_password = $arr[0]['password'];
         $valid = password_verify($return_password, $hashed_password);
