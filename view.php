@@ -1,11 +1,12 @@
+<?php
+session_start (); // Need this in each file before $_SESSION is used.
+?>
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="styles.css" />
 <title>Hangman</title>
-<?php
-session_start (); // Need this in each file before $_SESSION is used.
-?>
+
 </head>
 <body>
 <h1>Hangman</h1><br>
@@ -102,13 +103,14 @@ newGame();
 function newGame(){ 
 	initGuessBox();
 	drawGuessBox();
+	var start = "startGame";
 	var array = new Array();
 	var ajax = new XMLHttpRequest();
-	ajax.open("GET", "controller.php", true);
+	ajax.open("GET", "controller.php?start=" + start, true);
 	ajax.send();
 
 	ajax.onreadystatechange = function(){
-		console.log("State: " + ajax.readyState);
+		//console.log("State: " + ajax.readyState);
 		if (ajax.readyState == 4 && ajax.status == 200) {
 			//setting up the game
 			array = JSON.parse(ajax.responseText);

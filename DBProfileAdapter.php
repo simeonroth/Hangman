@@ -1,4 +1,4 @@
-<?php 
+<?php
     //File: Database class for users
     //Simeon Roth, Brian Ma
 
@@ -19,11 +19,27 @@ class DBProfileAdapter {
     }
     
     public function addNewUser($userName, $password) {
-        $stmt = $this->DB->prepare('insert into user_info(username, password) VALUES(' . "'" . $userName . "'" . ', ' . "'" . $password . "'" . ')'); 
+        $stmt = $this->DB->prepare('insert into user_info(username, password) VALUES( :username, :password)');
+        $stmt->bindParam(':username', $userName);
+        $stmt->bindParam(':password', $password);
+        
         $stmt->execute();
+        
+        //$stmt = $this->DB->prepare('insert into user_info(username, password) VALUES(' . "'" . $userName . "'" . ', ' . "'" . $password . "'" . ')'); 
+        //$stmt->execute();
         //return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    
+    public function checkUsername($userName) {
+        $stmt = $this->DB->prepare('SELECT username FROM user_info WHERE EXISTS (SELECT username FROM user_info WHERE username=' . "'" . $userName . "'" . ')');
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function checkPassword($userName, $password) {
+        $stmt = $this->DB->prepare('SELECT username FROM user_info WHERE EXISTS (SELECT password FROM user_info WHERE password=' . "'" . $password . "'" . 
+                                    'and username=' . "'" . $userName . "'" . ')');
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
     
 }
 
