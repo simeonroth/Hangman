@@ -1,6 +1,3 @@
-<?php
-session_start (); // Need this in each file before $_SESSION is used.
-?>
 <!DOCTYPE html>
 <html>
 <head>
