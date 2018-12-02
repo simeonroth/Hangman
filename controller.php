@@ -8,8 +8,8 @@ if(! isset($_SESSION['oneGame'])) {
 }
 /////////////////////////////////////////////////////////////
 if (isset($_GET['new'])){ 
-    $new_username = $_GET['new_username'];
-    $new_password = $_GET['new_password'];
+    $new_username = htmlspecialchars($_GET['new_username']);
+    $new_password = htmlspecialchars($_GET['new_password']);
     
     $_GET['new'] = new DBProfileAdapter();
     
@@ -28,8 +28,8 @@ if (isset($_GET['new'])){
 }
 
 if (isset($_GET['return'])) {
-    $return_username = $_GET['return_username'];
-    $return_password = $_GET['return_password'];
+    $return_username = htmlspecialchars($_GET['return_username']);
+    $return_password = htmlspecialchars($_GET['return_password']);
     
     $_GET['return'] = new DBProfileAdapter();
     
@@ -63,7 +63,7 @@ if(isset($_GET['start'])) {
     }
     
     $_GET['start'] = $wordArray;
-    echo json_encode($_GET['start']);
+    echo htmlspecialchars(json_encode($_GET['start']), ENT_NOQUOTES);
 }
 
 

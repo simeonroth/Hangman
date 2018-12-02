@@ -16,7 +16,7 @@ session_start();
 <form action="controller.php" method="get">
 	Username: <input type = "text" id = "new_username" name = "new_username" required> <br>
 	Password: <input type="password" id="new_password" name="new_password" required> <br>
-	<input type="submit" name="new" value="Sign Up" onclick = "myFunction()"> <br> <br><br>
+	<input type="submit" name="new" value="Sign Up"> <br> <br><br>
 </form>
 
 <br><br><br>
