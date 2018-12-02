@@ -1,7 +1,7 @@
 <?php 
 session_start();
 require_once "DBProfileAdapter.php";
-
+//comment
 /////////////////////////////////////////////////////////////
 if (isset($_GET['new'])){ //for new users
     $new_username = htmlspecialchars($_GET['new_username']);
