@@ -7,16 +7,13 @@ session_start (); // Need this in each file before $_SESSION is used.
 <link rel="stylesheet" type="text/css" href="styles.css" />
 <link rel="stylesheet" type="text/css" href="styles2.css" />
 <title>Hangman</title>
-<<<<<<< HEAD
 
-=======
 <?php
 session_start (); // Need this in each file before $_SESSION is used.
 ?>
 <style>
 
 </style>
->>>>>>> branch 'master' of https://github.com/simeonroth/Hangman.git
 </head>
 <body>
 <h1>Hangman</h1><br>
