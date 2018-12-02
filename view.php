@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="styles.css" />
+<!-- <link rel="stylesheet" type="text/css" href="styles.css" /> -->
 <link rel="stylesheet" type="text/css" href="styles2.css" />
 <title>Hangman</title>
-
 <?php
 session_start (); // Need this in each file before $_SESSION is used.
 ?>
@@ -17,10 +16,12 @@ session_start (); // Need this in each file before $_SESSION is used.
  
  <div class = "col">
 <canvas id="myCanvas" width="300" height="300">Your browser does not support the HTML5 canvas tag.</canvas><br><br>
-<div id="messages"></div>
-<div id="lines"></div>
+<!-- <div class = "size" id="div"></div><br> -->
+<div id = "lines" class = "size"></div> <br><br><br>
 
+<div id="messages" class = "size"></div>
 </div>
+ 
  
 <div class = "col">
 
@@ -69,25 +70,22 @@ var button = document.getElementById("button");
 var ctx = c.getContext("2d");
 var letterGuesses;
 var attempts;
-var maxGuesses=7; 
-var lines =  document.getElementById("lines");
+var maxGuesses=7;
+
+var lines = document.getElementById("lines");
+
 var messages = document.getElementById("messages");
 var div = document.getElementById("div");
 var input = document.getElementById("input");
-
 var guess;
 var hiddenWord;
 var i;
 var correctGuess = 0;
 var e;
-
 var word = "";
 var element = document.getElementById("random");
-
 ///////////////////////////////////////////////////////
-
 newGame();
-
 //this starts a new game
 function newGame(){ 
 	initGuessBox();
@@ -97,7 +95,6 @@ function newGame(){
 	var ajax = new XMLHttpRequest();
 	ajax.open("GET", "controller.php?start=" + start, true);
 	ajax.send();
-
 	ajax.onreadystatechange = function(){
 		//console.log("State: " + ajax.readyState);
 		if (ajax.readyState == 4 && ajax.status == 200) {
@@ -107,7 +104,6 @@ function newGame(){
 			element.innerHTML = word;
 			initLines();
 			initWord();
-			
 		}
 	}
 	
@@ -120,8 +116,8 @@ function newGame(){
 	input.value=""; 
 	input.disabled=false;
 	button.disabled=false;
-
 }
+
 function initLines(){
 	var d;
 	lines.innerHTML="";
@@ -135,15 +131,12 @@ function initLines(){
 	
 }
 
-
-
 function initGuessBox(){
 	letterGuesses = new Array(26);
 	for (i=0;i<26;i++){
 		letterGuesses[i] = "&nbsp";
 	}
 }
-
 function drawGuessBox(){
 	
 	for (i=1;i<27;i++){
@@ -152,7 +145,6 @@ function drawGuessBox(){
 	}
 	
 }
-
 //makes a letter guess when the user inputs a letter
 function guessLetter(){ 
 	guess =  input.value.toLowerCase();
@@ -193,7 +185,6 @@ function guessLetter(){
 	input.value=""; // clears the input field
 	update(); // updates array display
 }
-
 //draws parts of the hangman based on number of attempts
 function drawHangman(){
 	ctx.beginPath();
@@ -201,7 +192,6 @@ function drawHangman(){
 		ctx.moveTo(50, 299);
 		ctx.lineTo(250, 299);
 		ctx.stroke();
-
 		ctx.moveTo(80, 299);
 		ctx.lineTo(80, 50);
 		ctx.moveTo(80, 50);
@@ -231,7 +221,6 @@ function drawHangman(){
 	ctx.closePath();
 	ctx.stroke();
 }
-
 // checks if word has been guessed
 function ifOver(){
 	for (i=0;i<word.length;i++){
@@ -240,7 +229,6 @@ function ifOver(){
 	}
 	return true;
 }
-
 //updates the div 
 function update(){
 	var d;
@@ -249,7 +237,6 @@ function update(){
 		d.innerHTML=hiddenWord[i];
 	}
 }
-
 //initializes a new word
 function initWord(){
 	hiddenWord = new Array(word.length);
@@ -258,10 +245,7 @@ function initWord(){
 	}
 	update();
 }
-
-
 </script>
 
 </body>
 </html>
-
