@@ -2,10 +2,6 @@
 session_start();
 require_once "DBProfileAdapter.php";
 
-
-if(! isset($_SESSION['oneGame'])) {
-    $_SESSION['oneGame'] = new DBProfileAdapter();
-}
 /////////////////////////////////////////////////////////////
 if (isset($_GET['new'])){ //for new users
     $new_username = htmlspecialchars($_GET['new_username']);
