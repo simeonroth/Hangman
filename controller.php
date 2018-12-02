@@ -13,7 +13,7 @@ if (isset($_GET['new'])){ //for new users
     
     if (! $_GET['new']->checkUsername($new_username)) { //if username exists in database
         $_GET['new']->addNewUser($new_username, $hashed_password);
-        header("Location: view.php");
+        header("Location: game.php");
     }
     else {
         echo ("<h3>Sorry, the username is already taken. Please try a different username.</h3>");
@@ -38,7 +38,7 @@ if (isset($_GET['return'])) {//for returning users
         $valid = password_verify($return_password, $hashed_password);
         
         if ($valid) {
-            header ("Location: view.php");
+            header ("Location: game.php");
         }
         else { //if username exists, but the password is incorrect
             echo ("<h3>Sorry, the username or password is incorrect. Please try again.</h3>");
