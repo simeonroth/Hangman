@@ -81,7 +81,7 @@ input{
     height:34px;
     border: 0;
 }
-.line{
+/*.line{
 	font-size:24px;
 	display: inline-block;
 	float: left;
@@ -93,4 +93,4 @@ input{
 	/*background: url("./images/line.png"); */
 
 	border-bottom: 2px solid black;
-}
+} */
