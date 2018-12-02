@@ -2,10 +2,6 @@
 session_start();
 require_once "DBProfileAdapter.php";
 
-
-if(! isset($_SESSION['oneGame'])) {
-    $_SESSION['oneGame'] = new DBProfileAdapter();
-}
 /////////////////////////////////////////////////////////////
 if (isset($_GET['new'])){ //for new users
     $new_username = htmlspecialchars($_GET['new_username']);
@@ -52,6 +48,7 @@ if (isset($_GET['return'])) {//for returning users
 
     }
     else { //if username does not exist in database
+        echo $return_username;
         echo ("<h3>Sorry, the username or password is incorrect. Please try again.</h3>");
         echo ("<button type = 'button'><a href = 'register.php'>Back</a></button>");
         exit;
