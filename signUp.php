@@ -9,15 +9,14 @@ session_start();
 </head>
 <body>
 
-
-
-
+<div class = "col2">
 <h1>Sign Up</h1>
 <form onsubmit="submitForm()">
-	Username: <input type = "text" id = "new_username" name = "new_username" required> <br>
-	Password: <input type="password" id="new_password" name="new_password" required> <br>
-	<input type="submit" name="new" value="Sign Up"> <br> <br><br>
+	<p class = "personalStylePage">Username: <input type = "text" id = "new_username" name = "new_username" required></p> <br>
+	<p class = "personalStylePage">Password: <input type="password" id="new_password" name="new_password" required></p> <br>
+	<input class = "personalStylePageB" type="submit" name="new" value="Sign Up"> <br> <br><br>
 </form>
+</div>
 
 <script>
 var un = document.getElementById("new_username");

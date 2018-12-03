@@ -6,6 +6,7 @@ session_start(); // Need this in each file before $_SESSION is used.
 ?>
 <style>
 #log {
+    padding-top: 20px;
 	display: inline-block;
 	float: right;
 }
@@ -22,12 +23,15 @@ session_start(); // Need this in each file before $_SESSION is used.
 	<h1 align="center">Hangman</h1>
 	<div class="banner" id="ban">
 		<img onclick="changePage('game.php')" src="./images/buttonPlay.png"
-			id="button"></img> <img onclick="changePage('leaderboards.php')"
-			src="./images/buttonLeaderboards.png" id="button"></img>
-		<div id='log'>logged in as guest</div>
+			id="button"></img> 
+		<img onclick="changePage('leaderboards.php')" src="./images/buttonLeaderboards.png" 
+			id="button"></img>
+			
+		<div id='log'>Logged in <br>as guest</div>
+		
 		<img class="button2" onclick="changePage('signUp.php')"
-			src="./images/buttonSignup.png" id="button"></img> <img
-			class="button2" onclick="changePage('signIn.php')"
+			src="./images/buttonSignup.png" id="button"></img> 
+		<img class="button2" onclick="changePage('signIn.php')"
 			src="./images/buttonLogin.png" id="button"></img>
 
 
@@ -58,7 +62,7 @@ function login(n){
 	banner.innerHTML+='<div id=\'log\'>logged in as guest</div>';
 	banner.innerHTML+='<img class = "button2" onclick="signOut()" src="./images/buttonSignout.png"id="button"></img>';
 	log=document.getElementById("log");
-	log.innerHTML="Welcome " +username + "!";
+	log.innerHTML="Welcome " + "<br>" + username + "!";
 }
 function signOut(){
 	username="";
@@ -67,7 +71,7 @@ function signOut(){
 	banner.innerHTML+='<img class="button2" onclick="changePage(\'signUp.php\')" src="./images/buttonSignup.png" id="button"></img>';
 	banner.innerHTML+='<img class="button2" onclick="changePage(\'signIn.php\')" src="./images/buttonLogin.png" id="button"></img>';
 	log=document.getElementById("log");
-	log.innerHTML="logged in as guest";
+	log.innerHTML="Logged in <br> as guest";
 	changePage("home.php");
 }
 </script>

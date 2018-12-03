@@ -39,7 +39,10 @@ session_start (); // Need this in each file before $_SESSION is used.
 <div class = "col2">
  <div id="ic" class= "size">Tries Left: </div>
  <div id="score" class="size">Score: </div>
+ 
 <div class = "size" id="random" ></div><br>
+<div class = "size" id="random2" ></div><br>
+
 <div id="guessesBox" class="grid-container">
   <div class="grid-item" id="1g" >a</div>
   <div class="grid-item" id="2g" >b</div>
@@ -101,10 +104,16 @@ var correctGuess = 0;
 var e;
 var word = "";
 var element = document.getElementById("random");
+var element2 = document.getElementById("random2");
 var ic = document.getElementById("ic");
 var sc = document.getElementById("score");
 var score;
+
+var username = "";
+var result = "";
 ///////////////////////////////////////////////////////
+username = window.parent.username;
+
 newGame();
 //this starts a new game
 function newGame(){ 
@@ -122,7 +131,7 @@ function newGame(){
 			//setting up the game
 			array = JSON.parse(ajax.responseText);
 			word = array[Math.floor(Math.random() * array.length)];
-			//element.innerHTML = word;
+			element.innerHTML = word;
 			initLines();
 			initWord();
 		}
@@ -191,6 +200,21 @@ function guessLetter(){
 			messages.innerHTML='You Lose. The word was "' + word +'"';
 			input.disabled=true;
 			button.disabled=true;
+
+			//////////////ajax call/////////////////////
+			result = "L";
+			var ajax = new XMLHttpRequest();
+			ajax.open("GET", "controller.php?username=" + username + "&result=" + result + "&score=" + score, true);
+			ajax.send();
+			ajax.onreadystatechange = function(){
+				//console.log("State: " + ajax.readyState);
+				if (ajax.readyState == 4 && ajax.status == 200) {
+					//element2.innerHTML = ajax.responseText;
+					//do something with username
+				}
+			}
+					
+			
 		}
 	} else {
 		score+=40;
@@ -198,6 +222,19 @@ function guessLetter(){
 			messages.innerHTML="You Win!";
 			input.disabled=true;
 			button.disabled=true;
+
+			//////////////ajax call/////////////////////
+			result = "W";
+			var ajax = new XMLHttpRequest();
+			ajax.open("GET", "controller.php?username=" + username + "&result=" + result + "&score=" + score, true);
+			ajax.send();
+			ajax.onreadystatechange = function(){
+				//console.log("State: " + ajax.readyState);
+				if (ajax.readyState == 4 && ajax.status == 200) {
+					//element2.innerHTML = ajax.responseText;
+					//do something with username
+				}
+			}
 		}
 	}
 	letterGuesses[guess.charCodeAt(0)-'a'.charCodeAt(0)]=guess;

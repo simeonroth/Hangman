@@ -9,12 +9,12 @@ session_start();
 </head>
 <body>
 
- <div class = "col2">
-<h1>Login</h1> <br>
+<div class = "col2">
+<h1>Login</h1>
 <form onsubmit="submitForm()" method="get">
-	Username: <input type = "text" id = "return_username" name = "return_username" required> <br>
-	Password: <input type="password" id="return_password" name="return_password" required> <br>
-	<input type="submit" name="return" value="Sign In"> <br>
+	<p class = "personalStylePage">Username: <input type = "text" id = "return_username" name = "return_username" required> </p> <br>
+	<p class = "personalStylePage">Password: <input type="password" id="return_password" name="return_password" required> </p> <br>
+	<input class = "personalStylePageB" type="submit" name="return" value="Sign In"> <br>
 </form>
 </div>
 <script>
@@ -26,7 +26,6 @@ function submitForm(){
 	ajax.open("GET", "controller.php?return_username=" + un.value +"&return_password=" +pass.value, true);
 	ajax.send();
 	ajax.onreadystatechange = function(){
-		//console.log("State: " + ajax.readyState);	
 		if (ajax.readyState == 4 && ajax.status == 200) {
 			if (ajax.responseText=="dne"){
 				alert("Invalid credentials.");
