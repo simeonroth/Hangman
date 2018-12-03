@@ -8,7 +8,7 @@ session_start(); // Need this in each file before $_SESSION is used.
 
 </style>	
 
-
+<!-- A Comment -->
 <link rel="stylesheet" type="text/css" href="styles4.css" />
 <link rel="stylesheet" type="text/css" href="styles2.css" />
 </head>
