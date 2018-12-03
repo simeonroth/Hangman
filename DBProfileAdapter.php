@@ -24,11 +24,26 @@ class DBProfileAdapter {
         $stmt->bindParam(':password', $password);
         
         $stmt->execute();
-        
-        //$stmt = $this->DB->prepare('insert into user_info(username, password) VALUES(' . "'" . $userName . "'" . ', ' . "'" . $password . "'" . ')'); 
-        //$stmt->execute();
-        //return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function addNewUserLB($userName) {
+        $val = 0;
+        $stmt = $this->DB->prepare('insert into leaderboard(username, totalGames, Won, Lost) VALUES( :username, :games, :won, :lost)');
+        $stmt->bindParam(':username', $userName);
+        $stmt->bindParam(':games', $val);
+        $stmt->bindParam(':won', $val);
+        $stmt->bindParam(':lost', $val);
+        
+        $stmt->execute();
+    }
+    public function increment() {
+        $val = 1;
+        $stmt = $this->DB->prepare('UPDATE leaderboard SET Lost = :lost, totalGames = :games');
+        $stmt->bindParam(':lost', $val);
+        $stmt->bindParam(':games', $val);
+        
+        $stmt->execute();
+    }
+    
     public function checkUsername($userName) {
         $stmt = $this->DB->prepare('SELECT username FROM user_info WHERE EXISTS (SELECT username FROM user_info WHERE username = :username)');
         $stmt->bindParam(':username', $userName);

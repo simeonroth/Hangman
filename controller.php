@@ -1,7 +1,12 @@
 <?php 
-session_start();
 require_once "DBProfileAdapter.php";
-//comment
+session_start();
+
+/*
+if(! isset($_SESSION['oneGame'])) {
+    $_SESSION['oneGame'] = new DBProfileAdapter();
+} */
+
 /////////////////////////////////////////////////////////////
 if (isset($_GET['new'])){ //for new users
     $new_username = htmlspecialchars($_GET['new_username']);
@@ -13,6 +18,7 @@ if (isset($_GET['new'])){ //for new users
     
     if (! $_GET['new']->checkUsername($new_username)) { //if username exists in database
         $_GET['new']->addNewUser($new_username, $hashed_password);
+        $_GET['new']->addNewUserLB($new_username);
         header("Location: game.php");
     }
     else {
@@ -20,8 +26,6 @@ if (isset($_GET['new'])){ //for new users
         echo ("<button type = 'button'><a href = 'register.php'>Back</a></button>");
         exit;
     }
-    #Use SESSIONS???????????
-    //$_SESSION['oneGame']->addNewUser($new_username, $new_password);
 
 }
 
@@ -41,6 +45,7 @@ if (isset($_GET['return'])) {//for returning users
             header ("Location: game.php");
         }
         else { //if username exists, but the password is incorrect
+            header ("Location: register.php");
             echo ("<h3>Sorry, the username or password is incorrect. Please try again.</h3>");
             echo ("<button type = 'button'><a href = 'register.php'>Back</a></button>");
             exit;
@@ -48,12 +53,16 @@ if (isset($_GET['return'])) {//for returning users
 
     }
     else { //if username does not exist in database
-        echo $return_username;
         echo ("<h3>Sorry, the username or password is incorrect. Please try again.</h3>");
         echo ("<button type = 'button'><a href = 'register.php'>Back</a></button>");
         exit;
     }
 }
+
+
+/*if (isset($_GET['win'])) {
+    $_SESSION['oneGame']->increment();
+} */
 
 ///////////////////////////////////////
 if(isset($_GET['start'])) {

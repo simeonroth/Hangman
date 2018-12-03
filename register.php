@@ -1,11 +1,10 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html>
 <head>
 <title>Login</title>
-
+<?php 
+session_start();
+?>
 </head>
 <body>
 
