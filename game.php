@@ -9,20 +9,22 @@ session_start (); // Need this in each file before $_SESSION is used.
 ?>
 <style>
 </style>
+
 </head>
 <body>
-<h1>Hangman</h1><br>
- 
- <div class = "col">
+<br>
+ <div id="messages" class = "size"></div>
+ <div class = "col1">
+ <br>
 <canvas id="myCanvas" width="300" height="300">Your browser does not support the HTML5 canvas tag.</canvas><br><br>
 <!-- <div class = "size" id="div"></div><br> -->
 <div id = "lines" class = "size"></div> <br><br><br>
 
-<div id="messages" class = "size"></div>
+
 </div>
  
  
-<div class = "col">
+<div class = "col2">
 
 <div class = "size" id="random" ></div><br>
 <div id="guessesBox" class="grid-container">
