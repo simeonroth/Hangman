@@ -18,12 +18,7 @@ session_start (); // Need this in each file before $_SESSION is used.
 <img onclick="changePage('game.php')" src="./images/buttonPlay.png" id="button"></img>
 <img  onclick="changePage('leaderboards.php')" src="./images/buttonLeaderboards.png" id="button"></img>
 </div>
-<iframe frameBorder="0" src="register.php" name="iframe_a" scrolling="no" id="iframe">
-
-<p>Working</p>
-
-
-</iframe>
+<iframe frameBorder="0" src="register.php" name="iframe_a" scrolling="no" id="iframe"></iframe>
 
 
 <script>
