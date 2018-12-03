@@ -7,52 +7,51 @@
 <?php
 session_start (); // Need this in each file before $_SESSION is used.
 ?>
-<style>
 
-</style>
 </head>
 <body>
-<h1>Hangman</h1><br>
- 
- <div class = "col">
+<br>
+ <div id="messages" class = "size"></div>
+ <div class = "col1">
+ <br>
 <canvas id="myCanvas" width="300" height="300">Your browser does not support the HTML5 canvas tag.</canvas><br><br>
 <!-- <div class = "size" id="div"></div><br> -->
 <div id = "lines" class = "size"></div> <br><br><br>
 
-<div id="messages" class = "size"></div>
+
 </div>
  
  
-<div class = "col">
+<div class = "col2">
 
 <div class = "size" id="random" ></div><br>
 <div id="guessesBox" class="grid-container">
-  <div class="grid-item" id="1" >a</div>
-  <div class="grid-item" id="2" >b</div>
-  <div class="grid-item" id="3" >c</div>
-  <div class="grid-item" id="4" >d</div>
-  <div class="grid-item" id="5" >e</div>
-  <div class="grid-item" id="6" >f</div>
-  <div class="grid-item" id="7" >g</div>
-  <div class="grid-item" id="8" >h</div>
-  <div class="grid-item" id="9" >i</div>
-  <div class="grid-item" id="10" >j</div>
-  <div class="grid-item" id="11" >k</div>
-  <div class="grid-item" id="12" >l</div>
-  <div class="grid-item" id="13" >m</div>
-  <div class="grid-item" id="14" >n</div>
-  <div class="grid-item" id="15" >o</div>
-  <div class="grid-item" id="16" >p</div>
-  <div class="grid-item" id="17" >q</div>
-  <div class="grid-item" id="18" >r</div>
-  <div class="grid-item" id="19" >s</div>
-  <div class="grid-item" id="20" >t</div>
-  <div class="grid-item" id="21" >u</div>
-  <div class="grid-item" id="22" >v</div>
-  <div class="grid-item" id="23" >w</div>
-  <div class="grid-item" id="24" >x</div>
-  <div class="grid-item" id="25" >y</div>
-  <div class="grid-item" id="26" >z</div>
+  <div class="grid-item" id="1g" >a</div>
+  <div class="grid-item" id="2g" >b</div>
+  <div class="grid-item" id="3g" >c</div>
+  <div class="grid-item" id="4g" >d</div>
+  <div class="grid-item" id="5g" >e</div>
+  <div class="grid-item" id="6g" >f</div>
+  <div class="grid-item" id="7g" >g</div>
+  <div class="grid-item" id="8g" >h</div>
+  <div class="grid-item" id="9g" >i</div>
+  <div class="grid-item" id="10g" >j</div>
+  <div class="grid-item" id="11g" >k</div>
+  <div class="grid-item" id="12g" >l</div>
+  <div class="grid-item" id="13g" >m</div>
+  <div class="grid-item" id="14g" >n</div>
+  <div class="grid-item" id="15g" >o</div>
+  <div class="grid-item" id="16g" >p</div>
+  <div class="grid-item" id="17g" >q</div>
+  <div class="grid-item" id="18g" >r</div>
+  <div class="grid-item" id="19g" >s</div>
+  <div class="grid-item" id="20g" >t</div>
+  <div class="grid-item" id="21g" >u</div>
+  <div class="grid-item" id="22g" >v</div>
+  <div class="grid-item" id="23g" >w</div>
+  <div class="grid-item" id="24g" >x</div>
+  <div class="grid-item" id="25g" >y</div>
+  <div class="grid-item" id="26g" >z</div>
 </div>
 
 <img  onclick="guessLetter()" src="./images/buttonGuess.png" id="button">
@@ -140,7 +139,7 @@ function initGuessBox(){
 function drawGuessBox(){
 	
 	for (i=1;i<27;i++){
-		e = document.getElementById(i.toString());
+		e = document.getElementById(i.toString() + 'g');
 		e.innerHTML = letterGuesses[i-1];
 	}
 	
