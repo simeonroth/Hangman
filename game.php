@@ -3,21 +3,33 @@
 <head>
 <link rel="stylesheet" type="text/css" href="styles.css" />
 <link rel="stylesheet" type="text/css" href="styles2.css" />
+
 <title>Hangman</title>
 <?php
 session_start (); // Need this in each file before $_SESSION is used.
 ?>
 <style>
+#messages{
+    text-align: center;
+    font-size: 30px;
+	width: 500px;
+	width: 100%;
+	height: 50px;
+	float: right;
+	margin: 20px;
+	 font-weight: bold;
+}
 </style>
 
 </head>
 <body>
-<br>
- <div id="messages" class = "size"></div>
+ <div id="messages" class = "size">&nbsp;</div>
  <div class = "col1">
- <br>
-<canvas id="myCanvas" width="300" height="300">Your browser does not support the HTML5 canvas tag.</canvas><br><br>
+ 
+<canvas id="myCanvas" width="300" height="320">Your browser does not support the HTML5 canvas tag.</canvas><br><br>
 <!-- <div class = "size" id="div"></div><br> -->
+
+<br>
 <div id = "lines" class = "size"></div> <br><br><br>
 
 
@@ -25,7 +37,8 @@ session_start (); // Need this in each file before $_SESSION is used.
  
  
 <div class = "col2">
-
+ <div id="ic" class= "size">Tries Left: </div>
+ <div id="score" class="size">Score: </div>
 <div class = "size" id="random" ></div><br>
 <div id="guessesBox" class="grid-container">
   <div class="grid-item" id="1g" >a</div>
@@ -60,7 +73,12 @@ session_start (); // Need this in each file before $_SESSION is used.
 <input type="text" id="input" size="1" maxlength="1" ></input><br>
 
 <img  onclick="newGame()" src="./images/buttonNewGame.png" id="button"><br>
+
 </div>
+<br>
+<br>
+
+
 
 
 <script type="text/javascript">
@@ -83,10 +101,14 @@ var correctGuess = 0;
 var e;
 var word = "";
 var element = document.getElementById("random");
+var ic = document.getElementById("ic");
+var sc = document.getElementById("score");
+var score;
 ///////////////////////////////////////////////////////
 newGame();
 //this starts a new game
 function newGame(){ 
+	score=0;
 	initGuessBox();
 	drawGuessBox();
 	var start = "startGame";
@@ -100,15 +122,16 @@ function newGame(){
 			//setting up the game
 			array = JSON.parse(ajax.responseText);
 			word = array[Math.floor(Math.random() * array.length)];
-			element.innerHTML = word;
+			//element.innerHTML = word;
 			initLines();
 			initWord();
 		}
 	}
-	
+
 	messages.innerHTML="";
 	attempts=0;
-	
+	ic.innerHTML="Tries Left: " + (maxGuesses - attempts);
+	sc.innerHTML="Score: " + score;
 	ctx.clearRect(0, 0, 300, 300);
 	
 	drawHangman();
@@ -144,6 +167,7 @@ function drawGuessBox(){
 }
 //makes a letter guess when the user inputs a letter
 function guessLetter(){ 
+	messages.innerHTML = "";
 	guess =  input.value.toLowerCase();
 	if (letterGuesses.includes(guess)){
 		messages.innerHTML="You've already guessed " + guess + "!";
@@ -160,24 +184,26 @@ function guessLetter(){
 		}
 	}
 	if (!correctGuess){ // if youre guess is wrong
+		score = score-20;
 		attempts ++;
-		messages.innerHTML="You've made "+ attempts +" incorrect guesse(s)";
 		drawHangman();
 		if (attempts==maxGuesses){ // lose conditional
-			messages.innerHTML="You Lose";
+			messages.innerHTML='You Lose. The word was "' + word +'"';
 			input.disabled=true;
 			button.disabled=true;
 		}
 	} else {
+		score+=40;
 		if (ifOver()){ // if game is won
-			messages.innerHTML="You Win";
+			messages.innerHTML="You Win!";
 			input.disabled=true;
 			button.disabled=true;
 		}
 	}
 	letterGuesses[guess.charCodeAt(0)-'a'.charCodeAt(0)]=guess;
 	drawGuessBox();
-	
+	ic.innerHTML="Tries Left: " + (maxGuesses - attempts);
+	sc.innerHTML="Score: " + score;
 	correctGuess=0;
 	input.value=""; // clears the input field
 	update(); // updates array display
