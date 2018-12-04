@@ -2,18 +2,19 @@ iframe{
 	padding: 0px;
 	overflow:hidden;
 	width: 100%;
-	height: 100%;
+	height: 80%;
 	overflow-y: hidden;
 	margin: 0px;
 }
 body{
 	margin: 0;
-	height: 800px;
+	height: 900px;
 	display: block;
 	position: relative;
 	font-family: Gaegu;
 	font-weight:normal;
 	font-style:normal;	
+	overflow: hidden;
 	zoom: 90%;
 }
 div.banner{
