@@ -5,7 +5,10 @@
 session_start(); // Need this in each file before $_SESSION is used.
 ?>
 
+
 <link rel="stylesheet" type="text/css" href="styles3.css" />
+
+
 </head>
 <body>
 	<h1 >Hangman</h1>

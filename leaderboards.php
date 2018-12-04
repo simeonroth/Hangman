@@ -13,7 +13,7 @@ session_start(); // Need this in each file before $_SESSION is used.
 <link rel="stylesheet" type="text/css" href="styles2.css" />
 </head>
 <body>
-
+<br>
 <div id = "divToChange"></div>
 <br><br><br>
 <button id = "button1" onclick = "getLB()">See Frequent Players</button>

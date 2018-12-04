@@ -123,14 +123,13 @@ username = window.parent.username;
 
 newGame();
 //this starts a new game
-
-function newGame(){
+	
+function newGame(){ 
 	if (attempts == maxGuesses || !ifOver()) {
 		points = (-20) * word.length;
 		checkEnd("L", points ,username);
 	}
 	
-function newGame(){ 
 	score=0;
 	initGuessBox();
 	drawGuessBox();
