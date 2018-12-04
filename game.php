@@ -9,16 +9,7 @@
 session_start (); // Need this in each file before $_SESSION is used.
 ?>
 <style>
-#messages{
-    text-align: center;
-    font-size: 30px;
-	width: 500px;
-	width: 100%;
-	height: 50px;
-	float: right;
-	margin: 20px;
-	 font-weight: bold;
-}
+
 </style>
 
 </head>

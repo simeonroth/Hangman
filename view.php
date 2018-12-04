@@ -4,38 +4,6 @@
 <?php
 session_start(); // Need this in each file before $_SESSION is used.
 ?>
-<style>
-#log {
-    padding-top: 20px;
-	display: inline-block;
-	float: right;
-}
-
-.button2 {
-	float: right;
-}
-h1{
-    margin: 0;
-    text-align: center;
-    width: 100%;
-    height: 90px;
-    font-size: 70px;
-    
-}
-h1::after {
-	content: "";
-	background: url(./images/headerBanner.png);
-	background-size: 15%;
-	opacity: 0.2;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	position: absolute;
-	z-index: -1;
-	height: 90px;
-</style>
-
 
 <link rel="stylesheet" type="text/css" href="styles3.css" />
 </head>
@@ -56,7 +24,7 @@ h1::after {
 
 
 	</div>
-	<iframe frameBorder="0" src="home.php" name="iframe_a" scrolling="no"
+	<iframe style="visibility:hidden;" onload="this.style.visibility = 'visible';"  frameBorder="0" src="home.php" name="iframe_a" scrolling="no"
 		id="iframe"></iframe>
 
 

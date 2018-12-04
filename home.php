@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 <html>
-<head>
-<style>
-h1{
-    width: 100%;
-    text-align: center;
-    font-size: 40px;
-}
-</style>	
+<head>	
 
-<br>
+
 <link rel="stylesheet" type="text/css" href="styles2.css" />
 </head>
 <body>
+<br>
 <h1>Welcome!</h1>
 <div class="col2">
 <div class="size">
