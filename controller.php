@@ -82,7 +82,17 @@ if (isset($_GET['frequent'])) {
         echo htmlspecialchars(json_encode($arr), ENT_NOQUOTES);
     }
 }
-
+//////////////////////////////
+if (isset($_GET['display'])) {
+    if (! isset($_GET['oneDisplay'])) {
+        $_GET['oneDisplay'] = new DBProfileAdapter();
+        
+        $username = $_GET['d_un'];
+        $arr = $_GET['oneDisplay']->getUsername($username);
+        
+        echo htmlspecialchars(json_encode($arr), ENT_NOQUOTES);
+    }
+}
 
 if (isset($_GET['username'])) {
     if (! isset($_GET['oneDB'])) {
