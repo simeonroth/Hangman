@@ -73,9 +73,11 @@ if (isset($_GET['frequent'])) {
         
         $arr = $_GET['most']->joinLeaderBoard();
         
+        $col = $_GET['col'];
+        
         $orderedArr = array();
         foreach ($arr as $key=>$secondArray) {
-            $orderedArr[$key] = $secondArray['totalGames'];
+            $orderedArr[$key] = $secondArray[$col];
         }
         array_multisort($orderedArr, SORT_DESC, $arr);
         

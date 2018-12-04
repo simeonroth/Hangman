@@ -74,7 +74,7 @@ class DBProfileAdapter {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     public function joinLeaderBoard() {
-        $stmt = $this->DB->prepare('SELECT user_info.username, leaderboard.totalGames FROM user_info JOIN leaderboard ON user_info.username = leaderboard.username WHERE leaderboard.totalGames >= 5');
+        $stmt = $this->DB->prepare('SELECT user_info.username, leaderboard.totalGames, leaderboard.Won, leaderboard.Lost, leaderboard.totalScore FROM user_info JOIN leaderboard ON user_info.username = leaderboard.username');
         $stmt->execute();
         return $stmt->fetchALL(PDO::FETCH_ASSOC);
     }
