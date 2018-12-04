@@ -72,11 +72,26 @@ session_start (); // Need this in each file before $_SESSION is used.
   <div class="grid-item" id="26g" >z</div>
 </div>
 
-<img  onclick="guessLetter()" src="./images/buttonGuess.png" id="button">
+<img  onclick="guessLetter()" src="./images/buttonGuess.png" id="button" id="b2">
 <input type="text" id="input" size="1" maxlength="1" ></input><br>
 
 <img  onclick="newGame()" src="./images/buttonNewGame.png" id="button"><br>
 
+</div>
+
+<div class="col2">
+<div class="size" id="wins">
+Wins: 
+</div>
+<div class="size" id="losses">
+Losses: 
+</div>
+<div class="size" id="tscore">
+Total Score: 
+</div>
+<div class="size" id="gmess">
+(login to see stats)
+</div>
 </div>
 <br>
 <br>
@@ -88,7 +103,7 @@ session_start (); // Need this in each file before $_SESSION is used.
 var c = document.getElementById("myCanvas");
 c.style.border = "none";
 var guessBox = document.getElementById("guessesBox");
-var button = document.getElementById("button");
+var button = document.getElementById("b2");
 var ctx = c.getContext("2d");
 var letterGuesses;
 var attempts;
@@ -117,6 +132,7 @@ username = window.parent.username;
 newGame();
 //this starts a new game
 function newGame(){ 
+	
 	score=0;
 	initGuessBox();
 	drawGuessBox();
@@ -146,7 +162,7 @@ function newGame(){
 	drawHangman();
 	input.value=""; 
 	input.disabled=false;
-	button.disabled=false;
+	button.onclick="guessLetter()";
 }
 function initLines(){
 	var d;
@@ -198,8 +214,10 @@ function guessLetter(){
 		drawHangman();
 		if (attempts==maxGuesses){ // lose conditional
 			messages.innerHTML='You Lose. The word was "' + word +'"';
+			input.value="";
 			input.disabled=true;
-			button.disabled=true;
+			
+			button.onclick="";
 
 			//////////////ajax call/////////////////////
 			result = "L";
@@ -220,8 +238,10 @@ function guessLetter(){
 		score+=40;
 		if (ifOver()){ // if game is won
 			messages.innerHTML="You Win!";
+			input.value="";
 			input.disabled=true;
-			button.disabled=true;
+			
+			button.onclick="";
 
 			//////////////ajax call/////////////////////
 			result = "W";

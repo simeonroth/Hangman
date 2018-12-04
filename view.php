@@ -14,13 +14,33 @@ session_start(); // Need this in each file before $_SESSION is used.
 .button2 {
 	float: right;
 }
+h1{
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    height: 90px;
+    font-size: 70px;
+    
+}
+h1::after {
+	content: "";
+	background: url(./images/headerBanner.png);
+	background-size: 15%;
+	opacity: 0.2;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+	height: 90px;
 </style>
 
 
 <link rel="stylesheet" type="text/css" href="styles3.css" />
 </head>
 <body>
-	<h1 align="center">Hangman</h1>
+	<h1 >Hangman</h1>
 	<div class="banner" id="ban">
 		<img onclick="changePage('game.php')" src="./images/buttonPlay.png"
 			id="button"></img> 
