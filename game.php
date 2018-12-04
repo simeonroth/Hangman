@@ -31,8 +31,8 @@ session_start (); // Need this in each file before $_SESSION is used.
  <div id="ic" class= "size">Tries Left: </div>
  <div id="score" class="size">Score: </div>
  
-<div class = "size" id="random" ></div><br>
-<div class = "size" id="random2" ></div><br>
+<!--  <div class = "size" id="random" ></div><br>-->
+
 
 <div id="guessesBox" class="grid-container">
   <div class="grid-item" id="1g" >a</div>
@@ -114,8 +114,8 @@ var i;
 var correctGuess = 0;
 var e;
 var word = "";
-var element = document.getElementById("random");
-var element2 = document.getElementById("random2");
+//var element = document.getElementById("random");
+//var element2 = document.getElementById("random2");
 var ic = document.getElementById("ic");
 var sc = document.getElementById("score");
 var score;
@@ -176,7 +176,7 @@ function newGame(){
 			//setting up the game
 			array = JSON.parse(ajax.responseText);
 			word = array[Math.floor(Math.random() * array.length)];
-			element.innerHTML = word;
+			//element.innerHTML = word;
 			initLines();
 			initWord();
 		}
