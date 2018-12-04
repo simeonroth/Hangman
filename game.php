@@ -71,18 +71,23 @@ session_start (); // Need this in each file before $_SESSION is used.
 </div>
 
 <div class="col2">
+
 <div class="size" id="wins">
 Wins: 
 </div>
+
 <div class="size" id="losses">
 Losses: 
 </div>
+ 
 <div class="size" id="tscore">
 Total Score: 
 </div>
+ 
 <div class="size" id="gmess">
 (login to see stats)
 </div>
+
 </div>
 <br>
 <br>
@@ -118,6 +123,11 @@ var score;
 var username = "";
 var result = "";
 var points;
+
+var winDisplay = document.getElementById("wins");
+var loseDisplay = document.getElementById("losses");
+var scoreDisplay = document.getElementById("tscore");
+var guestDisplay = document.getElementById("gmess");
 ///////////////////////////////////////////////////////
 username = window.parent.username;
 
@@ -130,6 +140,26 @@ function newGame(){
 		checkEnd("L", points ,username);
 	}
 	
+	var display = "display";
+	var array2 = new Array();
+	var ajax2 = new XMLHttpRequest();
+	ajax2.open("GET", "controller.php?display=" + display + "&d_un=" + username, true);
+	ajax2.send();
+	ajax2.onreadystatechange = function(){
+		if (ajax2.readyState == 4 && ajax2.status == 200) {
+			array2 = JSON.parse(ajax2.responseText);
+				
+			winDisplay.innerHTML = "Wins: " + array2[0]['Won'];
+			loseDisplay.innerHTML = "Losses: " + array2[0]['Lost'];
+			scoreDisplay.innerHTML = "Total Score: " + array2[0]['totalScore'];
+			guestDisplay.innerHTML = "";
+		}
+	}
+
+
+
+
+	////////////////////////////////////////////////
 	score=0;
 	initGuessBox();
 	drawGuessBox();
