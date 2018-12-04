@@ -19,7 +19,11 @@ body::after {
 	position: absolute;
 	z-index: -1;
 }
-
+h1{
+    width: 100%;
+    text-align: center;
+    font-size: 40px;
+}
 
 @font-face {
 	font-family: "Gaegu";
@@ -46,7 +50,8 @@ body::after {
 #myCanvas{
 	float: right;
 	margin-right: 53px;
-	margin-left: 100px;
+	margin-left: 1000px;
+	
 }
 
 #button:active {
@@ -68,13 +73,15 @@ body::after {
 	float: left;
 	width: 50%;
 	background-color: transparent;
-
+	
 
     
 }
 .col2{
 	float: left;
 	background-color: transparent;
+	margin-right: 20px;
+	margin-left: 20px;
 
 }
 .size {

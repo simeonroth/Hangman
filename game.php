@@ -9,16 +9,7 @@
 session_start (); // Need this in each file before $_SESSION is used.
 ?>
 <style>
-#messages{
-    text-align: center;
-    font-size: 30px;
-	width: 500px;
-	width: 100%;
-	height: 50px;
-	float: right;
-	margin: 20px;
-	 font-weight: bold;
-}
+
 </style>
 
 </head>
@@ -72,11 +63,26 @@ session_start (); // Need this in each file before $_SESSION is used.
   <div class="grid-item" id="26g" >z</div>
 </div>
 
-<img  onclick="guessLetter()" src="./images/buttonGuess.png" id="button">
+<img  onclick="guessLetter()" src="./images/buttonGuess.png" id="button" >
 <input type="text" id="input" size="1" maxlength="1" ></input><br>
 
 <img  onclick="newGame()" src="./images/buttonNewGame.png" id="button"><br>
 
+</div>
+
+<div class="col2">
+<div class="size" id="wins">
+Wins: 
+</div>
+<div class="size" id="losses">
+Losses: 
+</div>
+<div class="size" id="tscore">
+Total Score: 
+</div>
+<div class="size" id="gmess">
+(login to see stats)
+</div>
 </div>
 <br>
 <br>
@@ -117,12 +123,14 @@ username = window.parent.username;
 
 newGame();
 //this starts a new game
+
 function newGame(){
 	if (attempts == maxGuesses || !ifOver()) {
 		points = (-20) * word.length;
 		checkEnd("L", points ,username);
 	}
 	
+function newGame(){ 
 	score=0;
 	initGuessBox();
 	drawGuessBox();
@@ -152,7 +160,7 @@ function newGame(){
 	drawHangman();
 	input.value=""; 
 	input.disabled=false;
-	button.disabled=false;
+	button.onclick=guessLetter;
 }
 function initLines(){
 	var d;
@@ -204,8 +212,10 @@ function guessLetter(){
 		drawHangman();
 		if (attempts==maxGuesses){ // lose conditional
 			messages.innerHTML='You Lose. The word was "' + word +'"';
+			input.value="";
 			input.disabled=true;
-			button.disabled=true;
+			
+			button.onclick="";
 
 			//////////////ajax call/////////////////////
 			result = "L";
@@ -217,9 +227,11 @@ function guessLetter(){
 		score+=40;
 		if (ifOver()){ // if game is won
 			messages.innerHTML="You Win!";
+			//input.value="";
 			input.disabled=true;
-			button.disabled=true;
-
+			
+			button.onclick="";
+			
 			//////////////ajax call/////////////////////
 			result = "W";
 			checkEnd(result, score, username);

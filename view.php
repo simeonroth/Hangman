@@ -4,23 +4,11 @@
 <?php
 session_start(); // Need this in each file before $_SESSION is used.
 ?>
-<style>
-#log {
-    padding-top: 20px;
-	display: inline-block;
-	float: right;
-}
-
-.button2 {
-	float: right;
-}
-</style>
-
 
 <link rel="stylesheet" type="text/css" href="styles3.css" />
 </head>
 <body>
-	<h1 align="center">Hangman</h1>
+	<h1 >Hangman</h1>
 	<div class="banner" id="ban">
 		<img onclick="changePage('game.php')" src="./images/buttonPlay.png"
 			id="button"></img> 
@@ -36,7 +24,7 @@ session_start(); // Need this in each file before $_SESSION is used.
 
 
 	</div>
-	<iframe frameBorder="0" src="home.php" name="iframe_a" scrolling="no"
+	<iframe style="visibility:hidden;" onload="this.style.visibility = 'visible';"  frameBorder="0" src="home.php" name="iframe_a" scrolling="no"
 		id="iframe"></iframe>
 
 
