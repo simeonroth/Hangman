@@ -27,7 +27,7 @@ session_start(); // Need this in each file before $_SESSION is used.
 
 
 	</div>
-	<iframe style="visibility:hidden;" onload="this.style.visibility = 'visible';"  frameBorder="0" src="home.php" name="iframe_a" scrolling="no"
+	<iframe style="visibility:hidden;" onload="this.style.visibility = 'visible';"  frameBorder="0" src="home.php" name="iframe_a" 
 		id="iframe"></iframe>
 
 

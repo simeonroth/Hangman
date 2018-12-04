@@ -1,6 +1,7 @@
 body {
 	margin: 0;
-	height: 800px;
+	height: 100%;
+	min-height:600px;
 	display: block;
 	position: relative;
 	font-family: Gaegu;

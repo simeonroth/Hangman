@@ -14,6 +14,7 @@ session_start(); // Need this in each file before $_SESSION is used.
 </head>
 <body>
 <br>
+<h1>Top Players</h1>
 <div id = "divToChange"></div>
 <br><br><br>
 <button id = "button1" onclick = "getLB()">See Frequent Players</button>
@@ -44,17 +45,18 @@ ajax.onreadystatechange = function(){
 	if (ajax.readyState == 4 && ajax.status == 200) {
 		array = JSON.parse(ajax.responseText);
 		
-		string = "<table class = 'tablestyle'>" + "<tr><th>Username</th>" + "<th>Games Played</th>" + 
+		string = "<table class = 'tablestyle'>" + "<tr><th>Rank</th>" + "<th>Username</th>"+"<th>Games Played</th>" + 
 				 "<th>Wins</th>" + "<th>Losses</th>" + "<th>Total Score</th></tr>";
 
-		for (var i = 0; i < array.length; ++i) {
+		for (var i = 0; i < array.length ;++i) {
 			name = array[i]['username'];
 			games = array[i]['totalGames'];
 			scores = array[i]['totalScore'];
 			wins = array[i]['Won'];
 			losses = array[i]['Lost'];
 				
-			string += "<tr>" + "<td>" + name + "</td>" + 
+			string += "<tr>" + "<td>" + (i+1) + "</td>" + 
+					  "<td>" + name + "</td>" + 
 					  "<td>" + games + "</td>" + 
 					  "<td>" + wins + "</td>" + 
 					  "<td>" + losses + "</td>" + 

@@ -9,7 +9,7 @@ session_start();
 
 /////////////////////////////////////////////////////////////
 if (isset($_GET['new_username']) && isset($_GET['new_password'])) { // for new users
-    if (! isset($_GET['new'])) {
+    if (1) {
         $new_username = $_GET['new_username'];
 
         $new_password = $_GET['new_password'];
@@ -28,7 +28,7 @@ if (isset($_GET['new_username']) && isset($_GET['new_password'])) { // for new u
 }
 
 if (isset($_GET['return_username']) && isset($_GET['return_password'])) { // for returning users
-    if (! isset($_GET['return'])) {
+    if (1) {
         $return_username = $_GET['return_username'];
 
         $return_password = $_GET['return_password'];
