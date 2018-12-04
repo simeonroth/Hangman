@@ -73,6 +73,11 @@ class DBProfileAdapter {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function joinLeaderBoard() {
+        $stmt = $this->DB->prepare('SELECT user_info.username, leaderboard.totalGames FROM user_info JOIN leaderboard ON user_info.username = leaderboard.username WHERE leaderboard.totalGames >= 5');
+        $stmt->execute();
+        return $stmt->fetchALL(PDO::FETCH_ASSOC);
+    }
     
     public function checkUsername($userName) {
         $stmt = $this->DB->prepare('SELECT username FROM user_info WHERE EXISTS (SELECT username FROM user_info WHERE username = :username)');

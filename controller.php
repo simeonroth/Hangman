@@ -56,9 +56,33 @@ if (isset($_GET['leaderboard'])) {
         $_GET['db_lb'] = new DBProfileAdapter();
         
         $arr = $_GET['db_lb']->getLeaderBoard();
+        
+        $temporaryArr = array();
+        foreach ($arr as $key=>$secondArray) {
+            $temporaryArr[$key] = $secondArray['totalScore'];
+        }
+        array_multisort($temporaryArr, SORT_DESC, $arr);
+        
         echo htmlspecialchars(json_encode($arr), ENT_NOQUOTES);
     }
 }
+
+if (isset($_GET['frequent'])) {
+    if (! isset($_GET['most'])) {
+        $_GET['most'] = new DBProfileAdapter();
+        
+        $arr = $_GET['most']->joinLeaderBoard();
+        
+        $orderedArr = array();
+        foreach ($arr as $key=>$secondArray) {
+            $orderedArr[$key] = $secondArray['totalGames'];
+        }
+        array_multisort($orderedArr, SORT_DESC, $arr);
+        
+        echo htmlspecialchars(json_encode($arr), ENT_NOQUOTES);
+    }
+}
+
 
 if (isset($_GET['username'])) {
     if (! isset($_GET['oneDB'])) {

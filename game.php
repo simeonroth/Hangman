@@ -91,7 +91,7 @@ var guessBox = document.getElementById("guessesBox");
 var button = document.getElementById("button");
 var ctx = c.getContext("2d");
 var letterGuesses;
-var attempts;
+var attempts = 0;
 var maxGuesses=7;
 var lines = document.getElementById("lines");
 var messages = document.getElementById("messages");
@@ -111,12 +111,18 @@ var score;
 
 var username = "";
 var result = "";
+var points;
 ///////////////////////////////////////////////////////
 username = window.parent.username;
 
 newGame();
 //this starts a new game
-function newGame(){ 
+function newGame(){
+	if (attempts == maxGuesses || !ifOver()) {
+		points = (-20) * word.length;
+		checkEnd("L", points ,username);
+	}
+	
 	score=0;
 	initGuessBox();
 	drawGuessBox();
@@ -203,16 +209,7 @@ function guessLetter(){
 
 			//////////////ajax call/////////////////////
 			result = "L";
-			var ajax = new XMLHttpRequest();
-			ajax.open("GET", "controller.php?username=" + username + "&result=" + result + "&score=" + score, true);
-			ajax.send();
-			ajax.onreadystatechange = function(){
-				//console.log("State: " + ajax.readyState);
-				if (ajax.readyState == 4 && ajax.status == 200) {
-					//element2.innerHTML = ajax.responseText;
-					//do something with username
-				}
-			}
+			checkEnd(result, score, username);
 					
 			
 		}
@@ -225,16 +222,7 @@ function guessLetter(){
 
 			//////////////ajax call/////////////////////
 			result = "W";
-			var ajax = new XMLHttpRequest();
-			ajax.open("GET", "controller.php?username=" + username + "&result=" + result + "&score=" + score, true);
-			ajax.send();
-			ajax.onreadystatechange = function(){
-				//console.log("State: " + ajax.readyState);
-				if (ajax.readyState == 4 && ajax.status == 200) {
-					//element2.innerHTML = ajax.responseText;
-					//do something with username
-				}
-			}
+			checkEnd(result, score, username);
 		}
 	}
 	letterGuesses[guess.charCodeAt(0)-'a'.charCodeAt(0)]=guess;
@@ -304,6 +292,18 @@ function initWord(){
 		hiddenWord[i]="&nbsp";
 	}
 	update();
+}
+function checkEnd(result, score, username) {
+	var ajax = new XMLHttpRequest();
+	ajax.open("GET", "controller.php?username=" + username + "&result=" + result + "&score=" + score, true);
+	ajax.send();
+	ajax.onreadystatechange = function(){
+		//console.log("State: " + ajax.readyState);
+		if (ajax.readyState == 4 && ajax.status == 200) {
+			//element2.innerHTML = ajax.responseText;
+			//do something with username
+		}
+	}
 }
 </script>
 
