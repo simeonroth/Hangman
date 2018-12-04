@@ -134,10 +134,12 @@ username = window.parent.username;
 newGame();
 //this starts a new game
 	
-function newGame(){ 
-	if (attempts == maxGuesses || !ifOver()) {
-		points = (-20) * word.length;
-		checkEnd("L", points ,username);
+function newGame(){
+	if (attempts != maxGuesses) {
+		if (!ifOver()){
+			points = (-20) * word.length;
+			checkEnd("L", points ,username);
+		}
 	}
 	
 	var display = "display";
